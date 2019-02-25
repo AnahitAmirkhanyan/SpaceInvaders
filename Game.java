@@ -6,7 +6,8 @@ class Game extends Frame implements KeyListener {
    Nave ship;Bala bullet;
    Enemigos z1;
    Puntos points;
-
+   Spaceship ufo;
+   
    public Game()  {
       super("Space AUA Invaders");
       //a canvas to paint the game
@@ -24,7 +25,8 @@ class Game extends Frame implements KeyListener {
       z1.start(); //start moving enemies
       ship = new Nave(c.getGraphics());
       ship.start(); //start moving ship (on the ground)
-		
+	  ufo = new Spaceship(c.getGraphics(), points, 0, 40, z1);
+	  ufo.start();
       c.requestFocus();
 
    }
@@ -38,7 +40,7 @@ class Game extends Frame implements KeyListener {
       if (K.getKeyCode()==38) { 
         //release a new bullet is no one was (still) there
         if (bullet == null || !bullet.isAlive()) {
-        bullet = new Bala(c.getGraphics(), ship.getPos(),z1);
+        bullet = new Bala(c.getGraphics(), ship.getPos(),z1, ufo);
         bullet.start();
         }
       }

@@ -6,12 +6,14 @@ class Bala extends Thread{
    boolean t=true;
    boolean aa,bb,cc;
    Enemigos a;
-
-   public Bala(Graphics g, int xpos,Enemigos a){
+   Spaceship s;
+   
+   public Bala(Graphics g, int xpos,Enemigos a, Spaceship s){
       this.g = g;
-      ypos=280;
-      this.xpos=xpos;
-      this.a=a;
+      ypos = 280;
+      this.xpos = xpos;
+      this.a = a;
+      this.s = s;
    }
 
    Color black= new Color(0,0,0);
@@ -23,8 +25,8 @@ class Bala extends Thread{
          g.setColor(black);
          g.drawLine(xpos,ypos,xpos,ypos+5);
          ypos --;
-         if (a.tocado(xpos,ypos)) {
-        	 g.fillOval(xpos,ypos,3,3);
+         if (a.tocado(xpos,ypos) || s.tocado(xpos, ypos)) {
+        	 g.fillOval(xpos,ypos,3,3); 
         	 return;
         	 
          }

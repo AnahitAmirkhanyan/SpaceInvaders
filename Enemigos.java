@@ -7,7 +7,7 @@ public class Enemigos extends Thread {
   Enemigo [][] martians ;
   int direction = 1; 
   int rows, columns;
-  double wait = 80;
+  double wait = 150;
   Puntos p;
   Graphics g;
   
